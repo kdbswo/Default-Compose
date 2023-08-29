@@ -3,16 +3,17 @@ package com.loci.adefault
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyFirst()
+                    MyTextEx()
                 }
             }
         }
@@ -36,26 +37,29 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MyFirst() {
+fun MyTextEx() {
 
-    Column {
+    Text(
+        text = "안녕하세요 텍스트 예제입니다.",
+        fontSize = 30.sp,
+        color = Color.Red,
+        fontStyle = FontStyle.Italic,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(30.dp),
+        style = TextStyle(background = Color.Blue)
+    )
 
-
-    }
-
-    Row {
-        Text(text = "Hello", fontSize = 50.sp)
-
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(20.dp)) {
-            Text(text = "asdf")
-        }
-    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     DefaultTheme {
-        MyFirst()
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            MyTextEx()
+        }
     }
 }
