@@ -3,59 +3,52 @@ package com.loci.adefault
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.loci.adefault.ui.theme.DefaultTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             DefaultTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    MyFirst()
-                }
+                MyImageTest1()
+                MyImageTest2()
             }
         }
     }
 }
 
 @Composable
-fun MyFirst() {
+fun MyImageTest1() {
+    Image(
+        painter = painterResource(id = R.drawable.untitled),
+        contentDescription = "un",
+        modifier = Modifier.fillMaxSize()
+    )
+}
 
-    Column {
+//
 
-
-    }
-
-    Row {
-        Text(text = "Hello", fontSize = 50.sp)
-
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.padding(20.dp)) {
-            Text(text = "asdf")
-        }
-    }
+@Composable
+fun MyImageTest2() {
+    AsyncImage(
+        model = "https://i.namu.wiki/i/iq-F27IGInLOadHTPlsTo1FgAUmoybnQB2xWIQt-OSUcoSjpMQGOR1mM4LAuljsBnBjltrjIKgBaoP9MlkU6uA.webp",
+        contentDescription = "이미지 주소",
+    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     DefaultTheme {
-        MyFirst()
+        MyImageTest1()
+        MyImageTest2()
     }
 }
